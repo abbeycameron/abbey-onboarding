@@ -1,5 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import Map from "./map";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 
 const MainPage = (props) => {
   const navigate = useNavigate();
@@ -9,6 +11,7 @@ const MainPage = (props) => {
   return (
     <div className="MainPage">
       <h1> This the main page </h1>
+
       <div className={"inputContainer"}>
         <input
           className={"inputButton"}
@@ -16,6 +19,7 @@ const MainPage = (props) => {
           onClick={onButtonClick}
           value={"Logout"}
         />
+        <Map />
       </div>
     </div>
   );
