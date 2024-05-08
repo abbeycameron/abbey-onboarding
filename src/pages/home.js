@@ -1,6 +1,12 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import { Nav } from 'react-bootstrap'
+import styled from 'styled-components';
 
+const Logo = styled.h1`
+  font-size: 1.5rem;
+  margin: 0;
+`;
 
 const Home = (props) => {
   const { loggedIn, email } = props
@@ -15,20 +21,32 @@ const Home = (props) => {
     }
   }
 
+  const onRegisterClick = () => {
+    navigate('./register')
+  }
+
   return (
+    
     <div className="mainContainer">
+      <Nav style={{ position: 'absolute', top: 0, left: 3}}>
+      <Logo>KFLA Parks</Logo>
+    </Nav>
       <div className={'titleContainer'}>
         <div>Welcome!</div>
       </div>
       <div>This is the home page.</div>
-      <div className={'buttonContainer'}>
+      <div style={{ position: 'absolute', top: 0, right: 0}}>
         <input
           className={'inputButton'}
           type="button"
           onClick={onButtonClick}
           value={loggedIn ? 'Log out' : 'Log in'}
         />
-        {loggedIn ? <div>Your email address is {email}</div> : <div />}
+        <input
+        type="button"
+        onClick={onRegisterClick}
+        value='Register'
+        />
       </div>
     </div>
   )

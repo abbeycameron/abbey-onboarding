@@ -2,7 +2,7 @@ import React, { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import MainPage from "./main-page";
 
-const Login = (props) => {
+const Register = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
@@ -20,7 +20,6 @@ const Login = (props) => {
       setPasswordError("Please enter password.");
       return;
     } else {
-      setLoggedIn(true)
       navigate("/main-page");
     }
   };
@@ -28,7 +27,7 @@ const Login = (props) => {
   return (
     <div className={"mainContainer"}>
       <div className={"titleContainer"}>
-        <div>Login</div>
+        <div>Register</div>
       </div>
       <br />
       <div className={"inputContainer"}>
@@ -56,11 +55,11 @@ const Login = (props) => {
           className={"inputButton"}
           type="button"
           onClick={onButtonClick}
-          value={"Log in"}
+          value={"Register Now"}
         />
       </div>
     </div>
   );
 };
 
-export default Login;
+export default Register;

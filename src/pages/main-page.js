@@ -1,16 +1,15 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Map from "./map";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 
 const MainPage = (props) => {
   const navigate = useNavigate();
   const onButtonClick = () => {
-    navigate("/login");
+    navigate("/"); //Back to landing page
   };
   return (
     <div className="MainPage">
-      <h1> This the main page </h1>
+      <h1> Provincial Parks in the Kingston Area </h1>
 
       <div className={"inputContainer"}>
         <input
