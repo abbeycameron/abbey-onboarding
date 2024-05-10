@@ -1,6 +1,6 @@
-tesla map thing https://tesamuliawati.medium.com/display-json-data-using-react-leaflet-c01ff7670161 
-park map thing https://github.com/ugwutotheeshoes/react-leaflet-app-demo/blob/master/src/data/skateboard-parks.json?short_path=ff7e0c0
-
+//tesla map thing https://tesamuliawati.medium.com/display-json-data-using-react-leaflet-c01ff7670161 
+//park map thing https://github.com/ugwutotheeshoes/react-leaflet-app-demo/blob/master/src/data/skateboard-parks.json?short_path=ff7e0c0
+/*
 checkbox
 import { useState } from 'react';
 
@@ -31,3 +31,4 @@ export default function MyCheckbox() {
           key={park.map_label}
           position={[park.geo_point_2d.lat, park.geo_point_2d.lon]} /><Popup> {park.map_label} </Popup></>
         />
+        */

@@ -17,7 +17,7 @@ const Home = (props) => {
       localStorage.removeItem('user')
       props.setLoggedIn(false)
     } else {
-      navigate('/login')
+      navigate('./login')
     }
   }
 
@@ -26,7 +26,8 @@ const Home = (props) => {
   }
 
   return (
-    
+    <div className='bg-home'>
+      
     <div className="mainContainer">
       <Nav style={{ position: 'absolute', top: 0, left: 3}}>
       <Logo>KFLA Parks</Logo>
@@ -48,6 +49,7 @@ const Home = (props) => {
         value='Register'
         />
       </div>
+    </div>
     </div>
   )
 }

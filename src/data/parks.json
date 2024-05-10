@@ -8511,5 +8511,16 @@
     "description": null,
     "type": "PROVINCIAL",
     "geo_point_2d": { "lon": -78.379387, "lat": 45.837112}
+  },
+  {
+    "park_name": "SANDBANKS PP",
+    "address": null,
+    "ownership": "PROVINCIAL",
+    "park_id": 251,
+    "map_label": "Sandbanks Provincial Park",
+    "description": null,
+    "type": "PROVINCIAL",
+    "geo_point_2d": { "lon": -77.2392, "lat": 43.9070}
   }
+
 ]

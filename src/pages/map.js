@@ -1,6 +1,5 @@
-// Map.js
 import React, { useState } from "react";
-import { MapContainer, TileLayer, Marker, Popup} from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import parkData from "../data/parks.json";
 import "leaflet/dist/leaflet.css";
 import "../App";
@@ -9,76 +8,68 @@ import { Icon } from "leaflet";
 import "leaflet-defaulticon-compatibility";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 
-
-
 var purpleIcon = new window.L.Icon({
-  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-violet.png',
+  iconUrl:
+    "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-violet.png",
   iconSize: [25, 41],
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
-})
+});
 
-var greenIcon = new window.L.icon({
-  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-violet.png',
+var greenIcon = new window.L.Icon({
+  iconUrl:
+    "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png",
   iconSize: [25, 41],
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
-})
-//Build a checkbox
-function CheckBox() {
-  const [checkedBox, setChecked] = useState(false);
+});
 
-  function handleCheck(e) {
-    setChecked(e.target.checked);
-    <Marker>
-      icon={greenIcon}
-    </Marker>
-    
-  }
-
+function CheckBox({ checked, onChange }) {
   return (
-    <>
     <label>
-    <p><input type="checkbox" checked={checkedBox} onChange={handleCheck} />
-      Visited? </p>
+      <p>
+        <input type="checkbox" checked={checked} onChange={onChange} />
+        Visited?
+      </p>
     </label>
-    <p> {checkedBox ? 'visted' : ''} </p>
-    </>
   );
 }
 
 function Map() {
-  //const [activePark, setActivePark] = useState(null);
+  const [markerStates, setMarkerStates] = useState({});
 
-  //Build the Map
+  const handleMarkerCheck = (markerId) => (e) => {
+    const newMarkerStates = {
+      ...markerStates,
+      [markerId]: e.target.checked,
+    };
+    setMarkerStates(newMarkerStates);
+  };
+
   return (
     <MapContainer
       center={[44.5, -77]}
       zoom={9}
       scrollWheelZoom={false}
-      style={{ height: "00px" }}
-      icon={
-        new Icon({
-          iconUrl: purpleIcon,
-          iconSize: [25, 41],
-          iconAnchor: [12, 41],
-        })
-      }
+      style={{ height: "800px" }}
     >
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       />
-      {/* Populate map with park data from .json file */}
       {parkData.map((park) => (
         <Marker
           position={[park.geo_point_2d.lat, park.geo_point_2d.lon]}
           key={park.map_label}
-          icon={purpleIcon}
-          eventHandlers={{ mouseover: (event) => event.target.openPopup(),}}
+          icon={markerStates[park.map_label] ? greenIcon : purpleIcon}
+          eventHandlers={{ mouseover: (event) => event.target.openPopup() }}
         >
           <Popup>
-            {park.map_label} {"\n"} <CheckBox />
+            {park.map_label} {"\n"}
+            <CheckBox
+              checked={markerStates[park.map_label] || false}
+              onChange={handleMarkerCheck(park.map_label)}
+            />
           </Popup>
         </Marker>
       ))}
