@@ -13,7 +13,7 @@ code {
 }
 html,
 body {
-  background-color: rgba(143, 123, 233, 0.24);
+  background-color: rgb(255, 255, 255);
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
@@ -81,6 +81,14 @@ input[type="button2"]:hover {
 }
 .top-section{
   background-color: rgb(143, 123, 233);
+  height: 70px;
+  width: 100%
+}
+.login-bg{
+  background-color: white;
+}
+.top-section2{
+  background-color: rgba(143, 123, 233, 0.24);
   height: 70px;
   width: 100%
 }

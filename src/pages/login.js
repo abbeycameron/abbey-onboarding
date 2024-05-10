@@ -35,6 +35,7 @@ export default function SignIn() {
   };
 
   return (
+    <div className='login-bg'>
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
@@ -96,5 +97,6 @@ export default function SignIn() {
         </Box>
       </Container>
     </ThemeProvider>
+    </div>
   );
 }

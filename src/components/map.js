@@ -49,7 +49,7 @@ function Map() {
       center={[44.5, -77]}
       zoom={9}
       scrollWheelZoom={false}
-      style={{ height: "900px" }}
+      style={{ height: "800px" }}
     >
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
