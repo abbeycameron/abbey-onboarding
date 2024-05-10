@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Map from "./map";
+import { Nav } from "react-bootstrap"
 
 const MainPage = (props) => {
   const navigate = useNavigate();
@@ -9,18 +10,19 @@ const MainPage = (props) => {
   };
   return (
     <div className="MainPage">
-      <h1> Provincial Parks in the Kingston Area </h1>
-
-      <div className={"inputContainer"}>
+      <div className="MainContainer">
+      <h1> Provincial Parks in the Kingston Area </h1>   
+      <Nav style = {{ position: 'absolute', top: 0, right: 0}}>
         <input
           className={"inputButton"}
           type="button2"
           onClick={onButtonClick}
           value={"Logout"}
-        />
+        /></Nav>
         <Map />
       </div>
-    </div>
+      </div>
+    
   );
 };
 export default MainPage;

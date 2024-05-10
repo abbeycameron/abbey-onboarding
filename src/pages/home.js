@@ -2,11 +2,16 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Nav } from 'react-bootstrap'
 import styled from 'styled-components';
+import { TextField } from '@mui/material';
+import HomeMap from './homemap.js';
+import Map from './map';
+
 
 const Logo = styled.h1`
-  font-size: 1.5rem;
+  font-size: 1.9rem;
   margin: 0;
 `;
+
 
 const Home = (props) => {
   const { loggedIn, email } = props
@@ -20,22 +25,76 @@ const Home = (props) => {
       navigate('./login')
     }
   }
-
   const onRegisterClick = () => {
     navigate('./register')
   }
 
   return (
-    <div className='bg-home'>
-      
-    <div className="mainContainer">
-      <Nav style={{ position: 'absolute', top: 0, left: 3}}>
+    <div> 
+      <div className='top-section'>
+      </div>
+    <div className="bg-home">
+  
+    <Nav style={{ position: 'absolute', top: 8, left: 3} }>
       <Logo>KFLA Parks</Logo>
     </Nav>
+
       <div className={'titleContainer'}>
-        <div>Welcome!</div>
+        <div style= {{ 
+          textAlign: "center",
+          position: "absolute", 
+          top: 200,
+          color: "white"} } >
+          <div>Welcome!</div>
+        </div>
       </div>
-      <div>This is the home page.</div>
+      
+      <div className={'textContainer'} style={{height: "250px"}}>
+        <div style={{
+          //position: "absolute",
+          textAlign: "center",
+          color: "white",
+          position: "absolute",
+          top: "259px",
+          left: "860px"
+        }}>
+          <h2>KFLA Parks</h2>
+        </div>
+      </div>
+
+      <div className={'textContainer'} style={{height: "100px"}}>
+        <div style={{
+          //position: "absolute",
+          textAlign: "center",
+          color: "white",
+          position: "sticky",
+          top: "200px"
+        }}>
+          <p>Check parks off your to visit list!</p>
+        </div>
+      </div>
+
+      <div className={'textContainer'} style={{height: "300px", width: "50%"}}>
+        <div style={{
+          //position: "absolute",
+          textAlign: "left",
+          color: "black",
+          position: "sticky",
+          top: "525px",
+          right: "60px"
+        }}>
+          <h1> About </h1>
+          <p>Check off all parks you have visited via the interactive provincial park map! 
+          </p>
+        </div>
+      </div>
+      <div style={{ position: "absolute",
+        top: "525px",
+        left: "1000px"
+      }}>
+        <HomeMap/>
+      </div>
+
       <div style={{ position: 'absolute', top: 0, right: 0}}>
         <input
           className={'inputButton'}
@@ -46,10 +105,10 @@ const Home = (props) => {
         <input
         type="button"
         onClick={onRegisterClick}
-        value='Register'
+        value='Sign Up'
         />
       </div>
-    </div>
+      </div>
     </div>
   )
 }

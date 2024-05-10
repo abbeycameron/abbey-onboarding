@@ -14,42 +14,17 @@ var purpleIcon = new window.L.Icon({
   popupAnchor: [1, -34],
 });
 
-var greenIcon = new window.L.Icon({
-  iconUrl:
-    "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png",
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-});
-
-function CheckBox({ checked, onChange }) {
-  return (
-    <label>
-      <p>
-        <input type="checkbox" checked={checked} onChange={onChange} />
-        Visited?
-      </p>
-    </label>
-  );
-}
 
 function Map() {
   const [markerStates, setMarkerStates] = useState({});
 
-  const handleMarkerCheck = (markerId) => (e) => {
-    const newMarkerStates = {
-      ...markerStates,
-      [markerId]: e.target.checked,
-    };
-    setMarkerStates(newMarkerStates);
-  };
 
   return (
     <MapContainer
       center={[44.5, -77]}
       zoom={9}
       scrollWheelZoom={false}
-      style={{ height: "900px" }}
+      style={{ height: "400px", width: "860px" }}
     >
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -59,15 +34,11 @@ function Map() {
         <Marker
           position={[park.geo_point_2d.lat, park.geo_point_2d.lon]}
           key={park.map_label}
-          icon={markerStates[park.map_label] ? greenIcon : purpleIcon}
+          icon={purpleIcon}
           eventHandlers={{ mouseover: (event) => event.target.openPopup() }}
         >
           <Popup>
             {park.map_label} {"\n"}
-            <CheckBox
-              checked={markerStates[park.map_label] || false}
-              onChange={handleMarkerCheck(park.map_label)}
-            />
           </Popup>
         </Marker>
       ))}
