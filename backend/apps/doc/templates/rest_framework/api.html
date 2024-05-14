@@ -1,0 +1,12 @@
+{% extends "rest_framework/base.html" %}
+
+{% block title %}{% if name %}{{ name }} - {% endif %}API documentation{% endblock %}
+
+{% block branding %}
+  <a class='navbar-brand' rel="nofollow" href='/'>
+    Home
+  </a>
+  <a class='navbar-link' style="float: right; padding: 15px 15px" target="_blank" href="/admin/">
+    Admin site
+  </a>
+{% endblock %}

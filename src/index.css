@@ -64,7 +64,7 @@ input[type="button2"] {
   font-size: 15px;
   border-radius: 4px;
   cursor: pointer;
-  width: 100px; 
+  width: 100px;
 }
 
 input[type="button2"]:hover {
@@ -79,16 +79,16 @@ input[type="button2"]:hover {
   height: 450px;
   width: 100%;
 }
-.top-section{
+.top-section {
+  background-color: rgb(206, 198, 240);
+  height: 70px;
+  width: 100%;
+}
+.overall-bg {
+  background-color: rgb(206, 198, 240);
+}
+.top-section2 {
   background-color: rgb(143, 123, 233);
   height: 70px;
-  width: 100%
-}
-.login-bg{
-  background-color: white;
-}
-.top-section2{
-  background-color: rgba(143, 123, 233, 0.24);
-  height: 70px;
-  width: 100%
+  width: 100%;
 }

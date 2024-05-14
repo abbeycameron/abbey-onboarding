@@ -1,102 +1,84 @@
-import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
-const defaultTheme = createTheme();
+const Login = (props) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
 
-export default function SignIn() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const email = data.get('email')
-    const password = data.get('password')
+  const onButtonClick = async (props) => {
+    setEmailError("");
+    setPasswordError("");
 
-    const userInfo = {
-      'email': email,
-      'password' : password 
+    if ("" === email) {
+      setEmailError("Please enter your email");
+      return;
     }
-    //axios post here
-    navigate('/main-page')
+    if ("" === password) {
+      setPasswordError("Please enter a password");
+      return;
+    } else {
+      await axios
+        .post("http://127.0.0.1:8000/api/v1/accounts/users/", {
+          Email: email,
+          Password: password,
+        })
+        .then(function (response) {
+          alert(response);
+          console.log(response);
+          navigate("./main-page");
+        })
+        .catch(function (error) {
+          alert("BAD" + JSON.stringify(error));
+        });
+      //navigate("./main-page");
+    }
+    //auth stuff
   };
 
   return (
-    <div className='login-bg'>
-    <ThemeProvider theme={defaultTheme}>
-      <Container component="main" maxWidth="xs">
-        <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Sign in
-          </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              autoFocus
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-            />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Sign In
-            </Button>
-            <Grid container>
-              <Grid item>
-                <Link href="./register" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
-              </Grid>
-            </Grid>
-          </Box>
-        </Box>
-      </Container>
-    </ThemeProvider>
+    <div className="overall-bg">
+      <div className={"mainContainer"}>
+        <div className={"titleContainer"}>
+          <div>Login</div>
+        </div>
+        <br />
+        <div className={"inputContainer"}>
+          <input
+            value={email}
+            placeholder="Enter your email here"
+            onChange={(ev) => setEmail(ev.target.value)}
+            className={"inputBox"}
+          />
+          <label className="errorLabel">{emailError}</label>
+        </div>
+        <br />
+        <div className={"inputContainer"}>
+          <input
+            type="password"
+            value={password}
+            placeholder="Enter your password here"
+            onChange={(ev) => setPassword(ev.target.value)}
+            className={"inputBox"}
+          />
+          <label className="errorLabel">{passwordError}</label>
+        </div>
+        <br />
+        <div className={"inputContainer"}>
+          <input
+            className={"inputButton"}
+            type="button"
+            onClick={onButtonClick}
+            value={"Sign in"}
+          />
+        </div>
+      </div>
     </div>
   );
-}
+};
+
+export default Login;

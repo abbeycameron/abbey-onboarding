@@ -1,0 +1,5 @@
+{% extends 'rest_framework/api.html' %}
+
+{% block content %}
+  {{ markdown_content|safe }}
+{% endblock %}

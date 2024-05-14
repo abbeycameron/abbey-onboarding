@@ -27,6 +27,10 @@ const Home = (props) => {
     navigate("./register");
   };
 
+  const onMapClick = () => {
+    navigate("./main-page");
+  };
+
   return (
     <div>
       <div className="top-section"></div>
@@ -111,6 +115,8 @@ const Home = (props) => {
             value={loggedIn ? "Log out" : "Log in"}
           />
           <input type="button" onClick={onRegisterClick} value="Sign Up" />
+
+          <input type="button" onClick={onMapClick} value="Map" />
         </div>
       </div>
     </div>

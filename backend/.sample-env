@@ -1,0 +1,8 @@
+SECRET_KEY="5xo!h%6^q$#7b(voy#yh%$e=qu-w)q&_7@%h#13ql8ijbbm^z8"
+DATABASE_URL="sqlite:///db.sqlite3"
+FRONTEND_DOMAIN="127.0.0.1:3000"
+SITE_NAME="Awesome App"
+CSRF_TRUSTED_ORIGINS="http://127.0.0.1:3000"
+CORS_ALLOWED_ORIGINS="http://127.0.0.1:3000"
+DEBUG=True
+INIT_ADMIN=admin1@example.com

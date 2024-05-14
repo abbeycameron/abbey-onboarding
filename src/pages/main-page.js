@@ -28,6 +28,7 @@ const style = {
 
 const MainPage = (props) => {
   const navigate = useNavigate();
+
   const onButtonClick = () => {
     navigate("/"); //Back to landing page
   };
@@ -58,7 +59,7 @@ const MainPage = (props) => {
             </Typography>
             <Typography id="modal-modal-description" sx={{ mt: 2 }}>
               Hover your mouse over a location to see the park name. If you have
-              visited this park, check off "visited."
+              visited this park, enter the date to save the location.
             </Typography>
             <Typography id="modal-modal-description" sx={{ mt: 2 }}>
               A green marker means you've visited, purple means you haven't.

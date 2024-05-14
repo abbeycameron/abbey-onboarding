@@ -1,0 +1,13 @@
+# Cache
+__pycache__
+
+# Database
+*.sqlite3
+
+# Environment
+*.env*
+
+# Other
+/static
+requirements.txt
+requirements-test.txt

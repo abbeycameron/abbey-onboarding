@@ -6,6 +6,11 @@ import "../App";
 import "leaflet-defaulticon-compatibility";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { TextField } from "@mui/material";
+
 var purpleIcon = new window.L.Icon({
   iconUrl:
     "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-violet.png",
@@ -22,26 +27,53 @@ var greenIcon = new window.L.Icon({
   popupAnchor: [1, -34],
 });
 
-function CheckBox({ checked, onChange }) {
+//Popup box to handle input for each location
+function CheckBox({ markerId, visited, onSaveNotes }) {
+  const [selectedDate, setSelectedDate] = useState(null);
+
+  const handleSaveNotes = () => {
+    onSaveNotes(markerId, selectedDate);
+  };
+  //Return a calendar for user to input date and save.
   return (
     <label>
-      <p>
-        <input type="checkbox" checked={checked} onChange={onChange} />
-        Visited?
-      </p>
+      <p> Visited? Enter date below to save location:</p>
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <DatePicker
+          label="Date"
+          value={selectedDate}
+          onChange={(date) => setSelectedDate(date)}
+          renderInput={(params) => <TextField {...params} />}
+        />
+      </LocalizationProvider>
+      <button onClick={handleSaveNotes}>Save</button>
     </label>
   );
 }
 
 function Map() {
-  const [markerStates, setMarkerStates] = useState({});
+  const [notes, setNotes] = useState({});
 
-  const handleMarkerCheck = (markerId) => (e) => {
-    const newMarkerStates = {
-      ...markerStates,
-      [markerId]: e.target.checked,
-    };
-    setMarkerStates(newMarkerStates);
+  // const handleMarkerCheck = (markerId) => (e) => {
+  //   const isChecked = e.target.checked;
+  //   setNotes((prevNotes) => ({
+  //     ...prevNotes,
+  //     [markerId]: {
+  //       ...prevNotes[markerId],
+  //       visited: isChecked,
+  //     },
+  //   }));
+  // };
+
+  //Mark park as visited and list date.
+  const handleSaveNotes = (markerId, date) => {
+    setNotes((prevNotes) => ({
+      ...prevNotes,
+      [markerId]: {
+        visited: true,
+        date: date,
+      },
+    }));
   };
 
   return (
@@ -55,22 +87,35 @@ function Map() {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       />
-      {parkData.map((park) => (
-        <Marker
-          position={[park.geo_point_2d.lat, park.geo_point_2d.lon]}
-          key={park.map_label}
-          icon={markerStates[park.map_label] ? greenIcon : purpleIcon}
-          eventHandlers={{ mouseover: (event) => event.target.openPopup() }}
-        >
-          <Popup>
-            {park.map_label} {"\n"}
-            <CheckBox
-              checked={markerStates[park.map_label] || false}
-              onChange={handleMarkerCheck(park.map_label)}
-            />
-          </Popup>
-        </Marker>
-      ))}
+      {parkData.map((park) => {
+        const markerId = park.map_label;
+        const markerNotes = notes[markerId] || {};
+        const visited = markerNotes.visited || false;
+        const markerIcon = visited ? greenIcon : purpleIcon;
+
+        return (
+          <Marker
+            key={markerId}
+            position={[park.geo_point_2d.lat, park.geo_point_2d.lon]}
+            icon={markerIcon}
+            eventHandlers={{ mouseover: (event) => event.target.openPopup() }}
+          >
+            <Popup>
+              {markerId} {"\n"}
+              <CheckBox
+                markerId={markerId}
+                visited={visited}
+                onSaveNotes={handleSaveNotes}
+              />
+              {visited && markerNotes.date && (
+                <p>
+                  Day Visited: {new Date(markerNotes.date).toLocaleDateString()}
+                </p>
+              )}
+            </Popup>
+          </Marker>
+        );
+      })}
     </MapContainer>
   );
 }
