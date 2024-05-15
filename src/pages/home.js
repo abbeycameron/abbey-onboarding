@@ -2,9 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Nav } from "react-bootstrap";
 import styled from "styled-components";
-import { TextField } from "@mui/material";
 import HomeMap from "../components/homemap.js";
-import Map from "../components/map.js";
 
 const Logo = styled.h1`
   font-size: 1.9rem;

@@ -5,6 +5,7 @@
     "ownership": "PROVINCIAL",
     "park_id": 237,
     "map_label": "Lake Of The Mountain Provincial Park",
+    "map_link": "https://www.ontarioparks.ca/park/lakeonthemountain",
     "description": null,
     "type": "PROVINCIAL",
     "geojson": {
@@ -972,6 +973,7 @@
     "ownership": "PROVINCIAL",
     "park_id": 235,
     "map_label": "Sharbot Lake Provincial Park",
+    "map_link": "https://www.ontarioparks.ca/park/sharbotlake",
     "description": null,
     "type": "PROVINCIAL",
     "geojson": {
@@ -1379,13 +1381,14 @@
     },
     "geo_point_2d": { "lon": -76.7207121512939, "lat": 44.77434612026927 }
   },
-  
+
   {
     "park_name": "PRESQUILE PP",
     "address": null,
     "ownership": "PROVINCIAL",
     "park_id": 248,
     "map_label": "Presqu'ile Provincial Park",
+    "map_link": "https://www.ontarioparks.ca/park/presquile",
     "description": null,
     "type": "PROVINCIAL",
     "geojson": {
@@ -2849,6 +2852,7 @@
     "ownership": "PROVINCIAL",
     "park_id": 241,
     "map_label": "Charleston Lake Provincial Park",
+    "map_link": "https://www.ontarioparks.ca/park/charlestonlake",
     "description": null,
     "type": "PROVINCIAL",
     "geojson": {
@@ -2893,6 +2897,7 @@
     "ownership": "PROVINCIAL",
     "park_id": 249,
     "map_label": "Lower Madawaska Provincial Park",
+    "map_link": "https://www.ontarioparks.ca/park/lowermadawaskariver",
     "description": null,
     "type": "PROVINCIAL",
     "geojson": {
@@ -2917,13 +2922,14 @@
     },
     "geo_point_2d": { "lon": -77.39694406686087, "lat": 45.25677321993058 }
   },
-  
+
   {
     "park_name": "MATAWATCHAN PP",
     "address": null,
     "ownership": "PROVINCIAL",
     "park_id": 236,
     "map_label": "Matawatchan Provincial Park",
+    "map_link": "https://www.ontarioparks.ca/park/matawatchan",
     "description": null,
     "type": "PROVINCIAL",
     "geojson": {
@@ -3062,6 +3068,7 @@
     "ownership": "PROVINCIAL",
     "park_id": 239,
     "map_label": "Centennial Lake Provincial Park",
+    "map_link": "https://www.ontarioparks.ca/park/centenniallake",
     "description": null,
     "type": "PROVINCIAL",
     "geojson": {
@@ -3567,6 +3574,7 @@
     "ownership": "PROVINCIAL",
     "park_id": 244,
     "map_label": "Puzzle Lake Provincial Park",
+    "map_link": "https://www.ontarioparks.ca/park/puzzlelake",
     "description": null,
     "type": "PROVINCIAL",
     "geojson": {
@@ -3626,6 +3634,7 @@
     "ownership": "PROVINCIAL",
     "park_id": 255,
     "map_label": "Gould Lake Conservation Authority",
+    "map_link": "https://ontarioconservationareas.ca/conservation-areas/gould-lake/",
     "description": null,
     "type": "PROVINCIAL",
     "geojson": {
@@ -5871,6 +5880,7 @@
     "ownership": "PROVINCIAL",
     "park_id": 250,
     "map_label": "Egan Chutes Provincial Park",
+    "map_link": "https://www.ontarioparks.ca/park/eganchutes",
     "description": null,
     "type": "PROVINCIAL",
     "geojson": {
@@ -5945,13 +5955,14 @@
     },
     "geo_point_2d": { "lon": -77.72907927596412, "lat": 45.06215358039258 }
   },
-  
+
   {
     "park_name": "DEPOT LAKE C.A.",
     "address": null,
     "ownership": "PROVINCIAL",
     "park_id": 253,
     "map_label": "Depot Lake Conservation Authority",
+    "map_link": "https://ontarioconservationareas.ca/conservation-areas/depot-lakes/",
     "description": null,
     "type": "PROVINCIAL",
     "geojson": {
@@ -6115,7 +6126,7 @@
     },
     "geo_point_2d": { "lon": -76.77569667227185, "lat": 44.570684097011274 }
   },
- 
+
   {
     "park_name": "NAPANEE CONSERVATION AREA",
     "address": "Napanee",
@@ -6148,6 +6159,7 @@
     "ownership": "PROVINCIAL",
     "park_id": 240,
     "map_label": "Alexander Stewart Provincial Park",
+    "map_link": "https://www.ontarioparks.ca/park/alexanderstewart",
     "description": null,
     "type": "PROVINCIAL",
     "geojson": {
@@ -6178,6 +6190,7 @@
     "ownership": "PROVINCIAL",
     "park_id": 274,
     "map_label": "Parrotts Bay Conservation Authority",
+    "map_link": "https://ontarioconservationareas.ca/conservation-areas/parrotts-bay/",
     "description": null,
     "type": "PROVINCIAL",
     "geojson": {
@@ -6213,6 +6226,7 @@
     "ownership": "PROVINCIAL",
     "park_id": 234,
     "map_label": "Silver Lake Provincial Park",
+    "map_link": "https://www.ontarioparks.ca/park/silverlake",
     "description": null,
     "type": "PROVINCIAL",
     "geojson": {
@@ -6297,6 +6311,7 @@
     "ownership": "PROVINCIAL",
     "park_id": 252,
     "map_label": "Sheffield Conservation Authority",
+    "map_link": "https://ontarioconservationareas.ca/conservation-areas/sheffield/",
     "description": null,
     "type": "PROVINCIAL",
     "geojson": {
@@ -6338,6 +6353,7 @@
     "ownership": "PROVINCIAL",
     "park_id": 242,
     "map_label": "Frontenac Provincial Park",
+    "map_link": "https://www.ontarioparks.ca/park/frontenac",
     "description": null,
     "type": "PROVINCIAL",
     "geojson": {
@@ -8280,6 +8296,7 @@
     "ownership": "PROVINCIAL",
     "park_id": 246,
     "map_label": "Bon Echo Provincial Park",
+    "map_link": "https://www.ontarioparks.ca/park/bonecho",
     "description": null,
     "type": "PROVINCIAL",
     "geojson": {
@@ -8464,6 +8481,7 @@
     "ownership": "PROVINCIAL",
     "park_id": 251,
     "map_label": "Murphy's Point Provincial Park",
+    "map_link": "https://www.ontarioparks.ca/park/murphyspoint",
     "description": null,
     "type": "PROVINCIAL",
     "geojson": {
@@ -8508,9 +8526,10 @@
     "ownership": "PROVINCIAL",
     "park_id": 251,
     "map_label": "Algonquin Provincial Park",
+    "map_link": "https://www.ontarioparks.ca/park/algonquin",
     "description": null,
     "type": "PROVINCIAL",
-    "geo_point_2d": { "lon": -78.379387, "lat": 45.837112}
+    "geo_point_2d": { "lon": -78.379387, "lat": 45.837112 }
   },
   {
     "park_name": "SANDBANKS PP",
@@ -8518,9 +8537,9 @@
     "ownership": "PROVINCIAL",
     "park_id": 251,
     "map_label": "Sandbanks Provincial Park",
+    "map_link": "https://www.ontarioparks.ca/park/sandbanks",
     "description": null,
     "type": "PROVINCIAL",
-    "geo_point_2d": { "lon": -77.2392, "lat": 43.9070}
+    "geo_point_2d": { "lon": -77.2392, "lat": 43.907 }
   }
-
 ]

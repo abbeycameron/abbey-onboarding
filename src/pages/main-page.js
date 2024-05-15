@@ -2,9 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import Map from "../components/map";
 import { Nav } from "react-bootstrap";
-import { Popup } from "reactjs-popup";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import styled from "styled-components";
@@ -64,6 +62,9 @@ const MainPage = (props) => {
             <Typography id="modal-modal-description" sx={{ mt: 2 }}>
               A green marker means you've visited, purple means you haven't.
             </Typography>
+            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+              Click on a park's name to visit the website.
+            </Typography>
           </Box>
         </Modal>
       </div>
@@ -87,7 +88,7 @@ const MainPage = (props) => {
               className={"inputButton"}
               type="button2"
               onClick={onButtonClick}
-              value={"Logout"}
+              value={"Home Page"}
             />
           </Nav>
           <Nav style={{ position: "absolute", top: 0, right: 150 }}>
