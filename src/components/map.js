@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import parkData from "../data/parks.json";
 import "leaflet/dist/leaflet.css";
@@ -11,7 +11,8 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { TextField } from "@mui/material";
 
-import { SearchControl, OpenStreetMapProvider } from "leaflet-geosearch";
+import SearchBar from "./search-bar";
+import { useMap } from "react-leaflet";
 
 var purpleIcon = new window.L.Icon({
   iconUrl:
@@ -73,6 +74,10 @@ function CheckBox({ markerId, visited, onSaveNotes, onChange }) {
 
 function Map() {
   const [notes, setNotes] = useState({});
+  const [searchText, setSearchText] = useState("");
+  const [filteredParkData, setFilteredParkData] = useState([]);
+  const [mapCenter, setMapCenter] = useState([44.5, -77]);
+  const [mapZoom, setMapZoom] = useState(8);
 
   const handleMarkerCheck = (markerId) => (e) => {
     const isChecked = e.target.checked;
@@ -91,25 +96,64 @@ function Map() {
       [markerId]: {
         visited: true,
         date: date,
-        notes: notes,
       },
     }));
   };
+  const handleSearch = (searched) => {
+    console.log("Searched data:", searched);
+    //Calculate new center if there are filtered results
+    if (searched.length > 0) {
+      const lat = searched[0].geo_point_2d.lat;
+      const long = searched[0].geo_point_2d.lon;
+      // console.log("lat:", lat);
+      // console.log("long:", long);
+      // setMapCenter([lat, long]);
+      // setMapZoom(5);
+    }
+    return searched.map((park) => (
+      <div key={park.map_label}>
+        <p>{park.map_label}</p>
+        {/* <p> Latitude: {park.geo_point_2d.lat}</p>
+        <p> Longitude: {park.geo_point_2d.lon}</p> */}
+      </div>
+    ));
+  };
+
+  useEffect(() => {
+    const searched = parkData.filter(
+      (park) => park.map_label.toLowerCase().includes(searchText.toLowerCase()) //Convert to lowercase for search ease
+    );
+    setFilteredParkData(searched);
+    console.log("Filtered park data:", searched);
+  }, [searchText]);
 
   return (
     <div>
-      <form>
-        <input
-          type="text"
-          placeholder="Search..."
-          // value={searchText}
-          // onChange={handleSearch}
-        />
-        <button type="submit">Search</button>
-      </form>
+      <SearchBar
+        searchText={searchText}
+        setSearchText={setSearchText}
+        handleSearch={handleSearch}
+        filteredParkData={filteredParkData}
+      />
+      {/* Display search results */}
+      {searchText && (
+        <div>
+          {filteredParkData.length > 0 ? (
+            <p>
+              Results found for "{searchText}": {filteredParkData.length}{" "}
+              park(s)
+            </p>
+          ) : (
+            <p>No results found for "{searchText}"</p>
+          )}
+          {/* Render the search results */}
+          {handleSearch(filteredParkData)}
+        </div>
+      )}
+      {/* Build map */}
       <MapContainer
-        center={[44.5, -77]}
-        zoom={9}
+        center={mapCenter}
+        zoom={mapZoom}
         scrollWheelZoom={false}
         style={{ height: "800px" }}
       >
@@ -117,7 +161,7 @@ function Map() {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         />
-        <searchControl />
+
         {parkData.map((park) => {
           const markerId = park.map_label;
           const markerNotes = notes[markerId] || {};
@@ -134,6 +178,7 @@ function Map() {
             >
               <Popup>
                 <a href={parkLink}> {markerId} </a>
+
                 <CheckBox
                   markerId={markerId}
                   visited={visited}

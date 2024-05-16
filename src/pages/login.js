@@ -22,20 +22,20 @@ const Login = (props) => {
       setPasswordError("Please enter a password");
       return;
     } else {
-      await axios
-        .post("http://127.0.0.1:8000/api/v1/accounts/users/", {
-          Email: email,
-          Password: password,
-        })
-        .then(function (response) {
-          alert(response);
-          console.log(response);
-          navigate("./main-page");
-        })
-        .catch(function (error) {
-          alert("BAD" + JSON.stringify(error));
-        });
-      //navigate("./main-page");
+      // await axios
+      //   .post("http://127.0.0.1:8000/api/v1/accounts/users/", {
+      //     Email: email,
+      //     Password: password,
+      //   })
+      //   .then(function (response) {
+      //     alert(response);
+      //     console.log(response);
+      //     navigate("./main-page");
+      //   })
+      //   .catch(function (error) {
+      //     alert("BAD" + JSON.stringify(error));
+      //   });
+      navigate("../main-page");
     }
     //auth stuff
   };

@@ -53,17 +53,21 @@ const MainPage = (props) => {
         >
           <Box sx={style}>
             <Typography id="modal-modal-title" variant="h6" component="h2">
-              How to
+              How to: Markers and Searching
+            </Typography>
+
+            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+              Hover your mouse over a location to see the park name. Click on a
+              park's name to visit the website.
             </Typography>
             <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-              Hover your mouse over a location to see the park name. If you have
-              visited this park, enter the date to save the location.
+              If you have visited this park, enter the date to save the
+              location. A green marker means you've visited, purple means you
+              haven't.
             </Typography>
             <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-              A green marker means you've visited, purple means you haven't.
-            </Typography>
-            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-              Click on a park's name to visit the website.
+              Use the search bar to search for keywords or specific park names
+              to see what parks are available.
             </Typography>
           </Box>
         </Modal>
@@ -91,7 +95,7 @@ const MainPage = (props) => {
               value={"Home Page"}
             />
           </Nav>
-          <Nav style={{ position: "absolute", top: 0, right: 150 }}>
+          <Nav style={{ position: "absolute", top: 0, right: 120 }}>
             <HowTo />
           </Nav>
           <Map />

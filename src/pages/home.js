@@ -90,7 +90,7 @@ const Home = (props) => {
               color: "black",
               position: "sticky",
               top: "525px",
-              right: "60px",
+              right: "80px",
             }}
           >
             <h1> About </h1>

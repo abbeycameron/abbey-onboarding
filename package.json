@@ -20,6 +20,7 @@
     "leaflet-defaulticon-compatibility": "^0.1.2",
     "leaflet-geosearch": "^3.11.1",
     "leaflet-search": "^4.0.0",
+    "leaflet.smooth_marker_bouncing": "^3.0.3",
     "mongoose": "^8.3.4",
     "next": "^14.2.3",
     "nodemon": "^3.1.0",
