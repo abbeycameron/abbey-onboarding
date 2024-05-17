@@ -1,6 +1,3 @@
-<<<<<<< Updated upstream
-Abbey's onboarding project. 
+**Abbey's Onboarding Project**
 
-Interactive map that allows users to "check off" park locations that they have visited.
-=======
->>>>>>> Stashed changes
+An interactive park map that allows you to save locations you have visited, and take notes on them. 
