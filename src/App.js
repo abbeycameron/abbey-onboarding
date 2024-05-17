@@ -6,6 +6,7 @@ import { useState } from "react";
 import MainPage from "./pages/main-page";
 import "leaflet/dist/leaflet.css";
 import Register from "./pages/register";
+import NoteApp from "./components/noteapp";
 //import NavBar from './pages/navigation/navbar'
 
 <>
@@ -52,6 +53,7 @@ function App() {
             path="/register"
             element={<Register setLoggedIn={setLoggedIn} setEmail={setEmail} />}
           />
+          <Route path="/notes" element={<NoteApp />} />
         </Routes>
       </BrowserRouter>
     </div>

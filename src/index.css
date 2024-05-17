@@ -67,6 +67,19 @@ input[type="button2"] {
   width: 100px;
 }
 
+input[type="button3"] {
+  text-align: center;
+  border: rgb(47, 16, 187);
+  background: rgb(91, 59, 231);
+  color: rgb(255, 255, 255);
+  padding: 10px;
+  margin: 8px;
+  font-size: 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 80px;
+}
+
 input[type="button2"]:hover {
   background-color: rgb(117, 92, 228);
 }
@@ -86,6 +99,13 @@ input[type="button2"]:hover {
 }
 .overall-bg {
   background-color: rgb(206, 198, 240);
+  height: 100%;
+  width: 100%;
+}
+.note-bg {
+  background-color: rgb(206, 198, 240);
+  height: 194px;
+  width: 100%;
 }
 .top-section2 {
   background-color: rgb(143, 123, 233);

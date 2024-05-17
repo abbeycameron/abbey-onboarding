@@ -30,6 +30,9 @@ const MainPage = (props) => {
   const onButtonClick = () => {
     navigate("/"); //Back to landing page
   };
+  const onNoteClick = () => {
+    navigate("/notes"); //Back to landing page
+  };
 
   //Handle pop up instructions for how to use the map.
   function HowTo() {
@@ -97,6 +100,14 @@ const MainPage = (props) => {
           </Nav>
           <Nav style={{ position: "absolute", top: 0, right: 120 }}>
             <HowTo />
+          </Nav>
+          <Nav style={{ position: "absolute", top: 0, right: 240 }}>
+            <input
+              className={"inputButton"}
+              type="button2"
+              onClick={onNoteClick}
+              value={"Notes"}
+            />
           </Nav>
           <Map />
         </div>

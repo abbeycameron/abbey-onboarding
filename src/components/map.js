@@ -13,6 +13,8 @@ import { TextField } from "@mui/material";
 
 import SearchBar from "./search-bar";
 import { useMap } from "react-leaflet";
+import { Note } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
 
 var purpleIcon = new window.L.Icon({
   iconUrl:
@@ -31,9 +33,9 @@ var greenIcon = new window.L.Icon({
 });
 //Popup box to handle input for each location
 function CheckBox({ markerId, visited, onSaveNotes, onChange }) {
+  const navigate = useNavigate();
   const [selectedDate, setSelectedDate] = useState(null);
   const [showInput, setShowInput] = useState(true);
-
   function DateBox() {
     return (
       <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -52,6 +54,9 @@ function CheckBox({ markerId, visited, onSaveNotes, onChange }) {
     //setShowInput(false); // Hide the button and date box after saving
     return { visited };
   };
+  const onNoteClick = () => {
+    navigate("/notes"); //Back to landing page
+  };
 
   return (
     <label>
@@ -63,7 +68,19 @@ function CheckBox({ markerId, visited, onSaveNotes, onChange }) {
         <div>
           <p> Enter date below to save location:</p>
           <DateBox />
-          <button onClick={handleSaveNotes}>Save</button>{" "}
+
+          <input
+            className={"inputButton"}
+            type="button3"
+            onClick={handleSaveNotes}
+            value={"Save"}
+          />
+          <input
+            className={"inputButton"}
+            type="button3"
+            onClick={onNoteClick}
+            value={"Add Notes"}
+          />
         </div>
       ) : (
         <p></p>
@@ -73,15 +90,14 @@ function CheckBox({ markerId, visited, onSaveNotes, onChange }) {
 }
 
 function Map() {
-  const [notes, setNotes] = useState({});
+  const [dates, setDates] = useState({});
   const [searchText, setSearchText] = useState("");
   const [filteredParkData, setFilteredParkData] = useState([]);
-  const [mapCenter, setMapCenter] = useState([44.5, -77]);
-  const [mapZoom, setMapZoom] = useState(8);
+  const [notes, setNotes] = useState("");
 
   const handleMarkerCheck = (markerId) => (e) => {
     const isChecked = e.target.checked;
-    setNotes((prevNotes) => ({
+    setDates((prevNotes) => ({
       ...prevNotes,
       [markerId]: {
         ...prevNotes[markerId],
@@ -91,7 +107,7 @@ function Map() {
   };
 
   const handleSaveNotes = (markerId, date) => {
-    setNotes((prevNotes) => ({
+    setDates((prevNotes) => ({
       ...prevNotes,
       [markerId]: {
         visited: true,
@@ -101,20 +117,13 @@ function Map() {
   };
   const handleSearch = (searched) => {
     console.log("Searched data:", searched);
-    //Calculate new center if there are filtered results
     if (searched.length > 0) {
       const lat = searched[0].geo_point_2d.lat;
       const long = searched[0].geo_point_2d.lon;
-      // console.log("lat:", lat);
-      // console.log("long:", long);
-      // setMapCenter([lat, long]);
-      // setMapZoom(5);
     }
     return searched.map((park) => (
       <div key={park.map_label}>
         <p>{park.map_label}</p>
-        {/* <p> Latitude: {park.geo_point_2d.lat}</p>
-        <p> Longitude: {park.geo_point_2d.lon}</p> */}
       </div>
     ));
   };
@@ -152,8 +161,8 @@ function Map() {
       )}
       {/* Build map */}
       <MapContainer
-        center={mapCenter}
-        zoom={mapZoom}
+        center={[44.5, -77]}
+        zoom={8}
         scrollWheelZoom={false}
         style={{ height: "800px" }}
       >
@@ -164,10 +173,11 @@ function Map() {
 
         {parkData.map((park) => {
           const markerId = park.map_label;
-          const markerNotes = notes[markerId] || {};
-          const visited = markerNotes.visited || false;
+          const markerDate = dates[markerId] || {};
+          const visited = markerDate.visited || false;
           const markerIcon = visited ? greenIcon : purpleIcon;
           const parkLink = park.map_link;
+          const markerNotes = notes[markerId];
 
           return (
             <Marker
@@ -185,10 +195,10 @@ function Map() {
                   onSaveNotes={handleSaveNotes}
                   onChange={handleMarkerCheck(markerId)}
                 />
-                {visited && markerNotes.date && (
+                {visited && markerDate.date && (
                   <p>
                     Day Visited:{" "}
-                    {new Date(markerNotes.date).toLocaleDateString()}
+                    {new Date(markerDate.date).toLocaleDateString()}
                   </p>
                 )}
               </Popup>
